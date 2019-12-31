@@ -1,4 +1,5 @@
 import 'package:flutter_app/config/index.dart';
+import 'package:flutter_app/pages/member_page.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
@@ -25,7 +26,10 @@ class IndexPage extends StatelessWidget{
     ),
   ];
   final List<Widget> tabBodies =[
-
+    HomePage(),
+    CategoryPage(),
+    CartPage(),
+    MemberPage()
   ];
   @override
   Widget build(BuildContext context) {
