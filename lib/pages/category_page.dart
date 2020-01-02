@@ -17,7 +17,7 @@ class _CategoryPageState extends State<CategoryPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Center(
-      child: Text('主页'),
+      child: Text('分类'),
     );
   }
 

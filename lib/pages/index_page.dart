@@ -1,5 +1,7 @@
 import 'package:flutter_app/config/index.dart';
 import 'package:flutter_app/pages/member_page.dart';
+import 'package:flutter_app/provide/current_index_provide.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
@@ -34,7 +36,29 @@ class IndexPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    ScreenUtil.instance = ScreenUtil(width: 750,height: 1334)..init(context);
+    return Provide<CurrentIndexProvide>(
+      builder: (context,child,val){
+        int currentIndex = Provide.value<CurrentIndexProvide>(context).currentIndex;
+        return Scaffold(
+          backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+              currentIndex:currentIndex,
+              items:bottomTabs,
+            onTap: (index){
+              Provide.value<CurrentIndexProvide>(context).changeIndex(index);
+
+            },
+          ),
+          body: IndexedStack(
+            index:currentIndex,
+            children: tabBodies,
+          ),
+
+        );
+      },
+    );
   }
 
 }
